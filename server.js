@@ -9,6 +9,12 @@ var router = express.Router();
 
 var port = process.env.API_PORT || 3001;
 
+var mongoDB = 'mongodb://sravi4701:ravishankar@ds259255.mlab.com:59255/stunthub';
+mongoose.connect(mongoDB, { useMongoClient: true })
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
