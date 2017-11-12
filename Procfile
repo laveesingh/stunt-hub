@@ -1,2 +1,2 @@
-web: webpack-dev-server -d --config webpack.config.js --content-base public/ --progress --colors
+web: webpack
 api: nodemon server.js
