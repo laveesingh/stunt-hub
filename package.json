@@ -43,7 +43,7 @@
     "webpack-dev-server": "^2.9.4"
   },
   "scripts": {
-    "start": "webpack-dev-server -d --config webpack.config.js --content-base public/ --progress --colors",
+    "start": "webpack-dev-server -d --config webpack.config.js --content-base public/ --progress --colors --port $PORT",
     "start-dev": "nf start -p 3000"
   }
 }
