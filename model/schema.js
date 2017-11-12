@@ -33,6 +33,13 @@ var appointmentSchema = new Schema({
 	service_type: [String]
 });
 
-export trainerSchema;
-export traineeSchema;
-export appointmentSchema;
+module.exports = {
+	trainer: trainerSchema,
+	trainee: traineeSchema,
+	appointment: appointmentSchema
+};
+// module.exports = mongoose.model('Trainer', trainerSchema);
+// module.exports = mongoose.model('Trainee', traineeSchema);
+// export trainerSchema;
+// export traineeSchema;
+// export appointmentSchema;
