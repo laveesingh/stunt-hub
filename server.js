@@ -3,7 +3,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var { router } = require('./router')
 var app = express();
-var port = process.env.API_PORT || 3001;
+var port = process.env.PORT || 3001;
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
