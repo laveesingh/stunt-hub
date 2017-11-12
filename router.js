@@ -13,28 +13,34 @@ var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 router.get('/', function(req, res){
-  res.json({ message: 'API Initialized!'});
+  res.json({ 
+    message: 'API is running!!!',
+    endpointsList: [{
+      home: {
+        path: '/',
+        methods: 'get'
+      },
+      login: {
+        path: '/login',
+        methods: 'post'
+      },
+      signup: {
+        path: '/signup',
+        methods: 'post'
+      }
+    }]
+  });
 })
 
-router.route('/trainer')
-	.get(function(req, res){
-    Trainer.find(function(err, trainers){
-      if(err)
-        res.send(err)
-      res.json(trainers)
-    });
-	})
-  .post(function(req, res){
-      var trainer = new Trainer();
-      trainer.username = req.body.username;
-      trainer.password = req.body.password;
-      trainer.save(function(err){
-        if(err)
-          res.send(err);
-        res.json({message:'Trainer successfully added'});
-      });
-  });
+router.route('/login')
+  .post(function(request, response){
+    console.log('reqeust body:', request.body)
+  })
 
+router.route('/signup')
+  .post(function(request, response){
+    console.log('request body:', request.body)
+  })
 
 
 module.exports.router = router
