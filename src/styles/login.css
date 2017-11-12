@@ -1,0 +1,23 @@
+
+#btn-submit{
+  margin-top: 20px;
+}
+
+#paper{
+  padding: 20px;
+}
+
+#btn-reg *{
+  text-decoration: none;
+  color: white;
+}
+
+form{
+  text-align: center;
+  width: 100%;
+}
+
+form *{
+  width: 100%;
+}
+
