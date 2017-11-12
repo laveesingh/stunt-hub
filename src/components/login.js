@@ -7,6 +7,7 @@ import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 import { connect } from 'react-redux'
+import axios from 'axios'
 
 import { 
   loginUsernameChange,
@@ -15,6 +16,22 @@ import {
 import '../styles/login.css'
 
 class Login extends React.Component {
+
+  constructor(props){
+    super(props)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleSubmit(payload){
+    axios.post('http://localhost:3001/login', {
+      username: payload.username,
+      password: payload.password
+    }).then(function(response){
+      console.log('server says:', response)
+    }).catch(function(error){
+      console.log('server errors:', error)
+    })
+  }
 
   render () {
     return (
@@ -34,7 +51,13 @@ class Login extends React.Component {
                       onChange={this.props.handlePasswordChange} margin='normal' label='Password'
                     />
                     <br />
-                    <Button id='btn-submit' raised color='primary'>
+                    <Button id='btn-submit' raised color='primary' 
+                      onClick={(event)=>{
+                        this.handleSubmit({
+                          username: this.props.username,
+                          password: this.props.password
+                        })
+                      }}>
                       Submit
                     </Button>
                   </form>
@@ -67,7 +90,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleUsernameChange: (event) => dispatch(loginUsernameChange(event.target.value)),
-    handlePasswordChange: (event) => dispatch(loginPasswordChange(event.target.value))
+    handlePasswordChange: (event) => dispatch(loginPasswordChange(event.target.value)),
   }
 }
 

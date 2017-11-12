@@ -6,6 +6,7 @@ import TextField from 'material-ui/TextField'
 import Button from 'material-ui/Button'
 import Typography from 'material-ui/Typography'
 import { connect } from 'react-redux'
+import axios from 'axios'
 
 import { 
   signupUsernameChange,
@@ -14,6 +15,22 @@ import {
 import '../styles/signup.css'
 
 class Signup extends React.Component {
+
+  constructor(props){
+    super(props)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  handleSubmit(payload){
+    axios.post('http://localhost:3001/signup', {
+      username: payload.username,
+      password: payload.password
+    }).then(function(response){
+      console.log('server says:', response)
+    }).catch(function(error){
+      console.log('server errors:', error)
+    })
+  }
 
   render () {
     return (
@@ -33,7 +50,13 @@ class Signup extends React.Component {
                       onChange={this.props.handlePasswordChange} margin='normal' label='Password'
                     />
                     <br />
-                    <Button id='btn-submit' raised color='primary'>
+                    <Button id='btn-submit' raised color='primary'
+                      onClick={(event)=>{
+                        this.handleSubmit({
+                          username: this.props.username,
+                          password: this.props.password
+                        })
+                      }}>
                       Submit
                     </Button>
                   </form>

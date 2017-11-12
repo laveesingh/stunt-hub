@@ -16,4 +16,3 @@ export function loginPasswordChange(state={password: ""}, action){
   }
   return state
 }
-

@@ -35,11 +35,13 @@ router.get('/', function(req, res){
 router.route('/login')
   .post(function(request, response){
     console.log('reqeust body:', request.body)
+    response.json({'message': 'request successful from server'})
   })
 
 router.route('/signup')
   .post(function(request, response){
     console.log('request body:', request.body)
+    response.json({'message': 'request successful from server'})
   })
 
 
