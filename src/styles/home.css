@@ -1,0 +1,15 @@
+
+.inline-list{
+  display: flex;
+  flex-direction: row;
+}
+
+.list-container{
+  background-color: #3949ab;
+}
+
+.list-link{
+  text-decoration: none;
+  color: white;
+  font: bold;
+}
