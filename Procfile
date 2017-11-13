@@ -1,2 +1,3 @@
-web: webpack-dev-server -d --config webpack.config.js --content-base public/ --progress --colors --port $PORT || 8080
-api: nodemon server.js
+web: webpack
+client: node client.js
+api: node server.js
