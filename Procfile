@@ -1,3 +1,3 @@
-web: webpack
-client: node client.js
+web: node client.js
+build: webpack
 api: node server.js
